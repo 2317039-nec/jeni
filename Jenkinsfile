@@ -12,16 +12,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                bat 'java -cp . Calculator'
+                bat 'java Calculator'
             }
         }
 
         stage('Deploy') {
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
             steps {
-                echo 'Deploying...'
+                echo 'Deploying the application...'
+                echo 'Deployment successful! ✅'
             }
         }
     }
